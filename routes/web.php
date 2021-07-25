@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', 'AuthController@showLogin')->name('showLogin');
+    Route::get('/', 'AuthController@showLogin')->name('showLogin')->middleware('guest');
+    Route::post('exeLogin', 'AuthController@exeLogin')->name('exeLogin')->middleware('guest');
 
-Route::get('home','AuthController@showHome')->name('home');
-
-Route::post('exeLogin', 'AuthController@exeLogin')->name('exeLogin');
+    Route::get('home', 'AuthController@showHome')->name('home')->middleware('auth');
